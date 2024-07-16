@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        nav{
+            height: 75px;
+            background: grey;
+            
+            margin-top: 0;
+            margin-bottom: 50px;
+            
+        }
+        nav p{
+            margin: 0;
+            padding-top: 25px;
+          text-align: start;
+          color: white;  
+           font-weight: bold;
+           display: block;
+           margin-left: 50px;
+        }
+        body{
+            height: 35rem;
+            width: 70rem;
+            margin: auto;
+            border: 1px solid gray;
+        }
+        .inp{
+            border: 1px solid black;
+            width: 200px;
+            padding: 10px;
+            align-items: center;
+            display: block;
+            
+        }
+        .month{
+            display: inline-flex;
+           height: px;
+           
+        }
+        .month h4{
+            margin-left: 5px;
+        }
+        .block{
+            border: 1px solid grey;
+            background: rgb(240, 235, 235);
+            justify-items: center;
+            width: 15%;
+            margin-left: 150px;
+            padding: 25px;
+            display: block;
+        }
+        img{
+            height: 32px;
+            width: 32px;
+           font-weight: bolder;
+           margin-top: 5px;
+        }
+        .calc{
+            display: inline;
+            width: 15%;
+            margin-left:50px;
+            border: 1px solid gray;
+            padding: 20px;
+            background: rgb(240, 235, 235);
+        }
+        .calc input{
+            width: 65px;
+         
+         margin: 3px;
+        }
+        .big{
+            display: flex;
+          justify-content: flex-start;
+          margin-left: 25px;
+          padding: 25px;
+        }
+        .calc p{
+            display: inline-flex;
+            margin: 3px;
+        }
+        #square .square-lb{
+            display: inline-flex;
+        }
+       
+    </style>
+</head>
+<body>
+    <nav>
+        <p>HELLO</p>
+    </nav>
+    <div class="big">
+        <div class="block">
+            <div class="inp">
+                <label for="myDate">Выберите год:</label>
+                <input type="date" id="myDate" onchange="myFunction(this)">
+            </div>
+            <div class="month">
+                <h5>Колл-во месяцев: </h5>
+                <h4 id="demo"></h4>
+            </div>
+        </div>
+        <div class="calc">
+            <label for="number">ЧИСЛО</label>
+            <input type="number" id="namber" name="number" onchange="mathPow(this)">
+            <label for="number2">СТЕПЕНЬ</label>
+            <input type="number" id="namber2" name="number2" onchange="mathPow(this)">
+            <p class="resolt">РЕЗУЛЬТАТ</p>
+            <p id="degree"></p>
+            <label class="square-lb" for="square">КОРЕНЬ из</label>
+            <input type="number" id="sQuare" name="square" onchange="sQuar(this)">
+            <p>результат</p>
+            <p id="resolt_squar"></p>
+        </div>
+    </div>
+     <script>
+        function myFunction(x) {
+        var x = parseInt(document.getElementById("myDate").value);
+        var y = (2024 - x) * 12  
+        document.getElementById("demo").innerHTML = y;
+        }
+        function sQuar(sqr){
+            var sqr = document.getElementById("sQuare").value;
+            document.getElementById("resolt_squar").innerHTML = Math.sqrt(sqr);
+        }
+        function mathPow(nam, nam2){
+            var nam = document.getElementById("namber").value;
+            var nam2 = document.getElementById("namber2").value;
+            document.getElementById("degree").innerHTML = Math.pow(nam, nam2);
+
+        }
+     </script> 
+</body>
+</html>
