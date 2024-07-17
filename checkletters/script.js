@@ -1,17 +1,17 @@
 function separLetters(str) {
 
     var str = document.getElementById("texts").value;
-    let vowels = "";
-    let consonants = "";
+    let gls = "";
+    let sog = "";
     for (let i = 0; i < str.length; i++) {
         let letter = str[i].toLowerCase();
         if ("aeiouy".includes(letter)) {
-            vowels += letter;
+            gls += letter;
         } else if (letter >= "a" && letter <= "z") {
-            consonants += letter;
+            sog += letter;
         }
     }
     // return { vowels, consonants };
-    document.getElementById("vowel").innerHTML = vowels.length
-    document.getElementById("consonant").innerHTML = consonants.length
+    document.getElementById("vowel").innerHTML = gls.length
+    document.getElementById("consonant").innerHTML = sog.length
 }
