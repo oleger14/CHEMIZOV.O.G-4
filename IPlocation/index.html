@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP location</title>
+    <style>
+        body{
+            /* box-sizing: border-box;
+            background: url(./img/world-map-shutterstock_665429155\ \(1\).jpg);
+            
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            
+            height: 100%; */
+        }
+        
+       div{
+        /* margin: auto;
+        width: 850px;
+        height: 450px;
+        border: 1px solid black;
+        display: block; */
+       }
+    </style>
+</head>
+<body>
+    <div id="dv1">
+        <button type="button" id="btn">CLICK ME MORE</button>
+    </div>
+   
+    <script>
+        var btn = document.getElementById('btn')
+        btn.addEventListener('click',getItem)
+        var dv1 = document.getElementById('dv1');
+        function getItem(){
+           var url = 'https://ipapi.co/json/';
+           var html = '';
+           requestIp(url,function(data){
+            console.log(data);
+            var obj = data;
+            html += '<div><div>'+obj.network+'</div></div>'
+            html += '</div>'
+            dv1.innerHTML = html
+           })
+
+        }
+
+        function requestIp(url,callback){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState==4&&xhr.status==200){
+                    callback(xhr.responseText)
+                }
+            }
+            xhr.open('GET',url,true)
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
+
+<div><div></div></div>
