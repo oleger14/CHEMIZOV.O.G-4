@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IP location</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="./script.js"></script>
     <style>
         body{
             box-sizing: border-box;
@@ -30,20 +31,39 @@
     </style>
 </head>
 <body>
+    
+    
+      
+        <input type="text" id="staTe">
+        
+        <button onclick="showValue()">Submit</button>
+        <p id="demo2"></p>
+     
+        
+            
     <div class="box">
-        <button type="button" id="btn">УЗНАЙ СВОЙ IP АДРЕС</button>
         <div id="dv"></div>
     </div>
     <script>
-        var btn = document.getElementById('btn')
-        btn.addEventListener('click',getItem)
-        var dv = document.getElementById('dv');
-        var nrec = "102.129.226.0";
+       function showValue() {
+            var x = document.getElementById("staTe").value;
+            document.getElementById('demo2').innerHTML = x
+            var url2 = 'https://ipapi.co/'+ x +'/json/';
+            console.log(url2)
+        }
+        
+        // var btn = document.getElementById('btn')
+        // btn.addEventListener('click',getItem)
+        // var dv = document.getElementById('dv');
+       
+        window.onload = () => {getItem()}
         function getItem(){
+            
+            
+            // const nm = input.ariaValueText;
            dv.style.display = 'block';
            var url = 'https://ipapi.co/json/';
-           var url2 = 'https://ipapi.co/'+ nrec +'/json/'
-           console.log(url2)
+        //    var url = 'https://ipapi.co/'+ x +'/json/';
            var html = '';
            requestIp(url,function(data){
             // console.log(data);
@@ -67,6 +87,7 @@
            })
 
         }
+    
 
         function requestIp(url,callback){
             var xhr = new XMLHttpRequest();
