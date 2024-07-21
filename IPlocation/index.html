@@ -24,26 +24,42 @@
        font-weight: 1,500;
         display: none;
        }
-       .box{display: inline-block; justify-content: center; width: 350px; margin: 100px 100px;}
-       #btn{justify-content: center;  width: 320px; border: 1px solid blueviolet; border-radius: 15px; padding: 10px; margin-bottom: 20px; font-weight: bold; font-size: 24px;}
+       .box{display: inline-block; justify-content: center; width: 350px; margin: 50px 100px;}
+       #btn{justify-content: center;  width: 320px; border: 1px solid black; border-radius: 15px; padding: 7px; margin-bottom: 20px; font-weight: normal; font-size: 22px; background: rgb(222, 220, 217);}
        #dv div{ padding: 2px;}
+       .input{display: block; margin: 25px; padding: 5px;}
+       #staTe{width: 220px; margin-bottom: 10px; padding: 5px; border-radius: 10px; background: rgb(222, 220, 217);}
+       .btn2{padding: 5px; border-radius: 10px; background: rgb(222, 220, 217);}
+       .iptest{padding: 2px; width: 230px; border: 1px solid black; margin-left: 45px; background: rgb(222, 220, 217); display: block;
+        border-radius: 10px; text-align: center;}
+       .iptest p{padding: 1px; margin: 0;}
     </style>
 </head>
 <body>
+    <div class="input">
+        <input type="text" id="staTe" >
+        <button onclick="showValue()" class="btn2">Определить другой IP</button>
+    </div>
+    <div class="iptest">
+        <p>IP for testing </p>  
+        <p>US: 108.159.139.255</p>
+        <p>EU: 185.147.107.255</p>
+        <p>CN: 103.10.87.255</p>
+    </div>
     <div class="box">
         <button type="button" id="btn">УЗНАЙ СВОЙ IP АДРЕС</button>
         <div id="dv"></div>
     </div>
+        
     <script>
         var btn = document.getElementById('btn')
         btn.addEventListener('click',getItem)
         var dv = document.getElementById('dv');
-        var nrec = "102.129.226.0";
+        
         function getItem(){
            dv.style.display = 'block';
            var url = 'https://ipapi.co/json/';
-           var url2 = 'https://ipapi.co/'+ nrec +'/json/'
-           console.log(url2)
+           
            var html = '';
            requestIp(url,function(data){
             // console.log(data);
@@ -76,6 +92,46 @@
                 }
             }
             xhr.open('GET',url,true)
+            xhr.send();
+        }
+
+        function showValue() {
+            var x = document.getElementById("staTe").value;
+            var urls = 'https://ipapi.co/'+ x +'/json/';
+             var url2 = urls
+            dv.style.display = 'block';
+        
+           var html = '';
+           requestIp2(url2,function(data){
+            var obj = data;
+            html += '<div>IP :'+obj.ip+'</div>'
+            html += '<div>Sity :'+obj.city+'</div>'
+            html += '<div>Region :'+obj.region+'</div>'
+            html += '<div>Continent code :'+obj.continent_code+'</div>'
+            html += '<div>Country code :'+obj.country+'</div>'
+            html += '<div>Country name :'+obj.country_name+'</div>'
+            html += '<div>Country telefone code :'+obj.country_calling_code+'</div>'
+            html += '<div>Population :'+obj.country_population+'</div>'
+            html += '<div>Currency :'+obj.currency+'</div>'
+            html += '<div>Currency name :'+obj.currency_name+'</div>'
+            html += '<div>Latitude :'+obj.latitude+'</div>'
+            html += '<div>Longitude:'+obj.longitude+'</div>'
+            html += '<div>Network :'+obj.network+'</div>'
+            html += '<div>Postal code :'+obj.postal+'</div>'
+            html += '<div>Provider :'+obj.org+'</div>'
+            dv.innerHTML = html
+           })
+
+        }
+
+        function requestIp2(url2,callback){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState==4&&xhr.status==200){
+                    callback(JSON.parse(xhr.responseText))
+                }
+            }
+            xhr.open('GET',url2,true)
             xhr.send();
         }
     </script>
