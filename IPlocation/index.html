@@ -13,6 +13,9 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
+        .big{display: block; width: 400px; margin-left: 50px; margin-top: 25px;
+            font-family: "Roboto", sans-serif;
+            font-weight: 1,500;}
         #dv{
        border: 1px solid rgb(232, 231, 231);
        border-radius: 10px;
@@ -22,35 +25,40 @@
        color: aliceblue;
        font-family: "Roboto", sans-serif;
        font-weight: 1,500;
+       font-size: 26px;
         display: none;
        }
-       .box{display: inline-block; justify-content: center; width: 350px; margin: 50px 100px;}
+       .box{display: inline-block; justify-content: center; width: 350px; margin-top: 20px;}
        #btn{justify-content: center;  width: 320px; border: 1px solid black; border-radius: 15px; padding: 7px; margin-bottom: 20px; font-weight: normal; font-size: 22px; background: rgb(222, 220, 217);}
        #dv div{ padding: 2px;}
-       .input{display: block; margin: 25px; padding: 5px;}
-       #staTe{width: 220px; margin-bottom: 10px; padding: 5px; border-radius: 10px; background: rgb(222, 220, 217);}
-       .btn2{padding: 5px; border-radius: 10px; background: rgb(222, 220, 217);}
-       .iptest{padding: 2px; width: 230px; border: 1px solid black; margin-left: 45px; background: rgb(222, 220, 217); display: block;
+       .input{display: block; padding: 5px; align-items: center; width: 340px; margin-bottom: 10px;
+        font-family: "Roboto", sans-serif;
+       font-weight: 1,500;}
+       #staTe{width: 300px; margin-bottom: 10px; padding: 5px; border-radius: 10px; background: rgb(222, 220, 217);}
+       .btn2{padding: 5px; border-radius: 10px; background: rgb(222, 220, 217); width: 310px; font-family: "Roboto", sans-serif;
+         font-size: 24px;}
+       .iptest{padding: 2px; margin-left: 5px; width: 300px; border: 1px solid black; background: rgb(222, 220, 217); display: block;
         border-radius: 10px; text-align: center;}
        .iptest p{padding: 1px; margin: 0;}
     </style>
 </head>
 <body>
-    <div class="input">
-        <input type="text" id="staTe" >
-        <button onclick="showValue()" class="btn2">Определить другой IP</button>
-    </div>
-    <div class="iptest">
-        <p>IP for testing </p>  
-        <p>US: 108.159.139.255</p>
-        <p>EU: 185.147.107.255</p>
-        <p>CN: 103.10.87.255</p>
-    </div>
-    <div class="box">
-        <button type="button" id="btn">УЗНАЙ СВОЙ IP АДРЕС</button>
-        <div id="dv"></div>
-    </div>
-        
+    <div class="big">
+        <div class="input">
+            <input type="text" id="staTe" >
+            <button onclick="showValue()" class="btn2">Определить другой IP</button>
+        </div>
+        <div class="iptest">
+            <p>IP for testing </p>  
+            <p>US: 108.159.139.255</p>
+            <p>EU: 185.147.107.255</p>
+            <p>CN: 103.10.87.255</p>
+        </div>
+        <div class="box">
+            <button type="button" id="btn">УЗНАЙ СВОЙ IP АДРЕС</button>
+            <div id="dv"></div>
+        </div>
+    </div>    
     <script>
         var btn = document.getElementById('btn')
         btn.addEventListener('click',getItem)
